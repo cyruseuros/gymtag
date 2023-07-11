@@ -9,9 +9,9 @@ const App = define<App>({
   tag: 'app-container',
   stack: router(Home),
   content: e => html`
-    <template layout="column">
+    <div layout="column" >
       ${e.stack}
-    </template>
+    </div>
   `
 })
 

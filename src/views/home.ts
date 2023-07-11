@@ -9,6 +9,6 @@ export default define<Home>({
     url: '/'
   },
   content: () => html`
-    <span>home </span>
+    <span>home page</span>
   `
 })

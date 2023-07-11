@@ -6,11 +6,12 @@
 	},
 	"devDependencies": {
 		"typescript": "^5.1.6",
-		"vite": "^4.3.9",
+		"vite": "^4.4.2",
 		"vite-plugin-pwa": "^0.16.4"
 	},
 	"dependencies": {
-		"@shoelace-style/shoelace": "^2.5.2",
-		"hybrids": "^8.2.1"
+		"@picocss/pico": "^1.5.10",
+		"hybrids": "^8.2.1",
+		"lucide": "^0.259.0"
 	}
 }
