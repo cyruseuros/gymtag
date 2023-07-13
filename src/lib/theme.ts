@@ -1,10 +1,18 @@
 import pico from '@picocss/pico/css/pico.css?inline'
+import pink from './pink.css?inline'
 
-const picoStyleSheet = new CSSStyleSheet()
-picoStyleSheet.replaceSync(pico)
+function createStyleSheet(css: string): CSSStyleSheet {
+  const styleSheet = new CSSStyleSheet()
+  styleSheet.replace(css)
+  return styleSheet
+}
+
+const picoStyle = createStyleSheet(pico)
+const pinkStyle = createStyleSheet(pink)
 
 const styles = [
-  picoStyleSheet,
+  picoStyle,
+  pinkStyle,
 ]
 
 export default styles
