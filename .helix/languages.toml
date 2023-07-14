@@ -1,0 +1,19 @@
+[[language]]
+name = "html"
+formatter = { command = "pnpm", args = ["exec", "prettier", "--parser", "html"] }
+
+[[language]]
+name = "json"
+formatter = { command = "pnpm", args = ["exec", "prettier", "--parser", "json"] }
+
+[[language]]
+name = "css"
+formatter = { command = "pnpm", args = ["exec", "prettier", "--parser", "css"] }
+
+[[language]]
+name = "javascript"
+formatter = { command = "pnpm", args = ["exec", "prettier", "--parser", "typescript"] }
+
+[[language]]
+name = "typescript"
+formatter = { command = "pnpm", args = ["exec", "prettier", "--parser", "typescript"] }
