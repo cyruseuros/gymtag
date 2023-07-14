@@ -9,11 +9,8 @@ interface App {
 const App = define<App>({
   tag: 'app-container',
   stack: router(Home),
-  content: e => html`
-    <div layout="column" >
-      ${e.stack}
-    </div>
-  `.use(html.transition)
+  content: (e) =>
+    html` <div layout="column">${e.stack}</div> `.use(html.transition),
 })
 
 document.adoptedStyleSheets = styles

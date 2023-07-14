@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'prompt',
-    })
-  ]
+    }),
+  ],
 })

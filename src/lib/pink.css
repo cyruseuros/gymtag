@@ -1,11 +1,11 @@
 /* Pink Light scheme (Default) */
 /* Can be forced with data-theme="light" */
-[data-theme="light"],
-:root:not([data-theme="dark"]) {
+[data-theme='light'],
+:root:not([data-theme='dark']) {
   --primary: #d81b60;
   --primary-hover: #c2185b;
   --primary-focus: rgba(216, 27, 96, 0.125);
-  --primary-inverse: #FFF;
+  --primary-inverse: #fff;
 }
 
 /* Pink Dark scheme (Auto) */
@@ -15,17 +15,17 @@
     --primary: #d81b60;
     --primary-hover: #e91e63;
     --primary-focus: rgba(216, 27, 96, 0.25);
-    --primary-inverse: #FFF;
+    --primary-inverse: #fff;
   }
 }
 
 /* Pink Dark scheme (Forced) */
 /* Enabled if forced with data-theme="dark" */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --primary: #d81b60;
   --primary-hover: #e91e63;
   --primary-focus: rgba(216, 27, 96, 0.25);
-  --primary-inverse: #FFF;
+  --primary-inverse: #fff;
 }
 
 /* Pink (Common styles) */
