@@ -1,19 +1,18 @@
 import { store } from 'hybrids'
 import type { Model } from 'hybrids'
+import { enumerable } from '../lib/localStorage'
 
 interface Tag {
   id: string
   name: string
-  tags: Tag[]
+  categories: string[]
 }
 
 const Tag: Model<Tag> = {
   id: true,
   name: '',
-  tags: [],
-  [store.connect]: {
-    offline: true,
-  },
+  categories: [],
+  [store.connect]: enumerable('tag'),
 }
 
 export function makeTagName(name: string): string {
