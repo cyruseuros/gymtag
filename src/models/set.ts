@@ -9,7 +9,7 @@ interface Set {
   reps: number // n
   time: number // s
   angle: number // deg 0-90
-  difficulty: number // n 0-9
+  difficulty: number // n 0-10
 }
 
 const Set: Model<Set> = {

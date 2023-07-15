@@ -17,7 +17,7 @@ describe.concurrent('makeTagId', () => {
 
   for (const row of table) {
     it(row.name, () => {
-      expect(makeTagName(row.in)).to.be.equal(row.out)
+      expect(makeTagName(row.in)).toEqual(row.out)
     })
   }
 })
