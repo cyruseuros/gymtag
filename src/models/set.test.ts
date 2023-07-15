@@ -21,7 +21,7 @@ describe.concurrent('Set', () => {
       if (row.error) {
         await expect(store.set(set, row.v)).rejects.toThrow()
       } else {
-        await expect(store.set(set, row.v)).resolves
+        await expect(store.set(set, row.v)).resolves.not.toThrow()
       }
     })
   }
