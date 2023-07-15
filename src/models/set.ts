@@ -1,5 +1,6 @@
 import { store } from 'hybrids'
 import type { Model } from 'hybrids'
+import { enumerable } from '../lib/localStorage'
 
 // TODO: handle units in the future
 interface Set {
@@ -28,9 +29,7 @@ const Set: Model<Set> = {
     (v) => v >= 0 && v <= 10,
     'Only angles of 0-90 degrees are supported',
   ),
-  // [store.connect]: {
-  //   offline: true,
-  // },
+  [store.connect]: enumerable('set'),
 }
 
 export default Set

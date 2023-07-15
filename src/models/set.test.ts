@@ -2,6 +2,8 @@ import Set from './set'
 import { describe, it, expect } from 'vitest'
 import { store } from 'hybrids'
 
+// TODO: test value setting
+// TODO: test actual persistence
 describe.concurrent('Set', () => {
   const table = [
     { name: 'angle just right', v: { angle: 45 } },
