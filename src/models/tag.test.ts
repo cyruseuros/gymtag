@@ -1,5 +1,5 @@
 import { expect, it, describe } from 'vitest'
-import { makeTagId } from './tag'
+import { makeTagName } from './tag'
 
 describe.concurrent('makeTagId', () => {
   const table = [
@@ -17,7 +17,7 @@ describe.concurrent('makeTagId', () => {
 
   for (const row of table) {
     it(row.name, () => {
-      expect(makeTagId(row.in)).to.be.equal(row.out)
+      expect(makeTagName(row.in)).to.be.equal(row.out)
     })
   }
 })
