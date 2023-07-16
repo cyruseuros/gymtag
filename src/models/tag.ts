@@ -2,16 +2,22 @@ import { store } from 'hybrids'
 import type { Model } from 'hybrids'
 import { enumerable } from '../lib/localStorage'
 
+export enum Scope {
+  Exercise = 'exercise',
+  Set = 'set',
+  Muscle = 'muscle',
+}
+
 interface Tag {
   id: string
   name: string
-  categories: string[]
+  scopes: Set<Scope>
 }
 
 const Tag: Model<Tag> = {
   id: true,
   name: '',
-  categories: [],
+  scopes: new Set(),
   [store.connect]: enumerable('tag'),
 }
 
