@@ -3,6 +3,7 @@ import type { Model } from 'hybrids'
 import { enumerable } from '../lib/localStorage'
 
 // TODO: handle units in the future
+// TODO: dropsets/supersets...
 interface Set {
   id: string
   weight: number // kg
