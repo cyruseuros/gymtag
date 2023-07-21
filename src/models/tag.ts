@@ -1,13 +1,14 @@
-import { store } from 'hybrids'
 import type { Model } from 'hybrids'
-import { enumerable } from '../lib/localStorage'
 
 export enum Scope {
   Exercise = 'exercise',
+  Workout = 'workout',
   Set = 'set',
-  Muscle = 'muscle',
+  Log = 'log',
+  Muscle = 'muscle', // does not require model for now
 }
 
+// TODO: ensure tag names are unique once storage.connect is set up
 interface Tag {
   id: string
   name: string
@@ -18,7 +19,6 @@ const Tag: Model<Tag> = {
   id: true,
   name: '',
   scopes: new Set(),
-  [store.connect]: enumerable('tag'),
 }
 
 export function makeTagName(name: string): string {

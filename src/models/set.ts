@@ -1,11 +1,13 @@
 import { store } from 'hybrids'
 import type { Model } from 'hybrids'
-import { enumerable } from '../lib/localStorage'
+import Tag from './tag'
 
 // TODO: handle units in the future
+// TODO: timestamps (implications on logs)
 // TODO: dropsets/supersets...
 interface Set {
   id: string
+  tags: Tag[]
   weight: number // kg
   distance: number // m
   reps: number // n
@@ -16,6 +18,7 @@ interface Set {
 
 const Set: Model<Set> = {
   id: true,
+  tags: [Tag],
   weight: 0,
   distance: 0,
   reps: 0,
@@ -30,7 +33,6 @@ const Set: Model<Set> = {
     (v) => v >= 0 && v <= 10,
     'Only angles of 0-90 degrees are supported',
   ),
-  [store.connect]: enumerable('set'),
 }
 
 export default Set
