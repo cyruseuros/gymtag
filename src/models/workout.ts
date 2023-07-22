@@ -10,6 +10,6 @@ interface Workout {
 
 const Workout: Model<Workout> = {
   id: true,
-  tags: [Tag]
+  tags: [Tag],
   logs: [Log],
 }

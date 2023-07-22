@@ -1,12 +1,5 @@
+import Scope from './scope'
 import type { Model } from 'hybrids'
-
-export enum Scope {
-  Exercise = 'exercise',
-  Workout = 'workout',
-  Set = 'set',
-  Log = 'log',
-  Muscle = 'muscle', // does not require model for now
-}
 
 // TODO: ensure tag names are unique once storage.connect is set up
 interface Tag {
