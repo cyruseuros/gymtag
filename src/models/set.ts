@@ -31,7 +31,7 @@ const Set: Model<Set> = {
   difficulty: store.value(
     0,
     (v) => v >= 0 && v <= 10,
-    'Only angles of 0-90 degrees are supported',
+    'Only difficulty levels of 0-10 are supported',
   ),
 }
 

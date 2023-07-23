@@ -1,5 +1,5 @@
 import { mount, html, router, define } from 'hybrids'
-import styles from './lib/theme'
+import { styles } from './lib/theme'
 import Home from './views/home'
 
 interface App {

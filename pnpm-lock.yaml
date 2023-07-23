@@ -8,6 +8,9 @@ dependencies:
   '@picocss/pico':
     specifier: ^1.5.10
     version: 1.5.10
+  easycolors:
+    specifier: ^2.0.0
+    version: 2.0.0
   hybrids:
     specifier: ^8.2.2
     version: 8.2.2
@@ -2353,6 +2356,10 @@ packages:
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
+
+  /easycolors@2.0.0:
+    resolution: {integrity: sha512-rqbYNsHFlIep/hFOwRPLjkYYjl6KBRZx++BBuvCd/m61bYKtOgS94pOp6BM7aOkGVDDnXqDPQ+/MnWqp4PBYaw==}
+    dev: false
 
   /edge-paths@3.0.5:
     resolution: {integrity: sha512-sB7vSrDnFa4ezWQk9nZ/n0FdpdUuC6R1EOrlU3DL+bovcNFK28rqu2emmAUjujYEJTWIgQGqgVVWUZXMnc8iWg==}

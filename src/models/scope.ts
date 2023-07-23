@@ -3,8 +3,8 @@ enum Scope {
   Workout = 'workout',
   Set = 'set',
   Log = 'log',
-  // does not require model for now
-  Muscle = 'muscle',
+  // e.g. muscle group (abs, biceps etc.), cardio...
+  Target = 'target',
 }
 
 export default Scope
