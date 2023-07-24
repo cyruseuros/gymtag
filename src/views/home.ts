@@ -8,5 +8,9 @@ export default define<Home>({
   [router.connect]: {
     url: '/',
   },
-  content: () => html` <app-scope scopes="${['foo', 'barzi1']}"></app-scope> `,
+  content: () => html`
+    <app-scope
+      scopes="${['foo', 'bar', 'baz', 'bad', 'boo', 'bah']}"
+    ></app-scope>
+  `,
 })

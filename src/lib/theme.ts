@@ -1,5 +1,6 @@
 import pico from '@picocss/pico/css/pico.css?inline'
 import pink from './pink.css?inline'
+import hybrids from './hybrids.css?inline'
 import { material } from 'easycolors'
 
 function createStyleSheet(css: string): CSSStyleSheet {
@@ -10,7 +11,8 @@ function createStyleSheet(css: string): CSSStyleSheet {
 
 const picoStyle = createStyleSheet(pico)
 const pinkStyle = createStyleSheet(pink)
-export const styles = [picoStyle, pinkStyle]
+const hybridsStyle = createStyleSheet(hybrids)
+export const styles = [picoStyle, pinkStyle, hybridsStyle]
 
 // TODO: customize when you have a firmer stance on appearance
 const colors = [

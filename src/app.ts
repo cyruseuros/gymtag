@@ -16,9 +16,7 @@ const App = define<App>({
   tag: 'app-container',
   stack: router(Home),
   content: e =>
-    html`
-      <template layout="column" class="container">${e.stack}</template>
-    `.use(html.transition),
+    html`<div class="container">${e.stack}</div>`.use(html.transition),
 })
 
 document.adoptedStyleSheets = styles
