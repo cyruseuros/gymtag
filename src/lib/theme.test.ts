@@ -15,11 +15,21 @@ describe.concurrent('appColor', () => {
     'scope.5',
   ]
 
-  for (const row of table) {
-    it(row, () => {
-      const res = appColor(row)
-      expect(res).toMatch(/^#[a-f0-9]{6}$/i)
-      expect(res).toMatch(appColor(row))
-    })
-  }
+  describe.concurrent('isHex', () => {
+    for (const row of table) {
+      it(row, () => {
+        const res = appColor(row)
+        expect(res).toMatch(/^#[a-f0-9]{6}$/i)
+      })
+    }
+  })
+
+  describe.concurrent('isConsistent', () => {
+    for (const row of table) {
+      it(row, () => {
+        const res = appColor(row)
+        expect(res).toMatch(appColor(row))
+      })
+    }
+  })
 })

@@ -15,6 +15,7 @@ const hybridsStyle = createStyleSheet(hybrids)
 export const styles = [picoStyle, pinkStyle, hybridsStyle]
 
 // TODO: customize when you have a firmer stance on appearance
+// probably rob this blind: https://optemization.com/notion-color-guide
 const colors = [
   material.pink[600],
   material.blue[600],
@@ -31,7 +32,7 @@ export function appColor(key: string): string {
   }
 
   let charSum = 0
-  for (let i = 0; i > key.length; i++) {
+  for (let i = 0; i < key.length; i++) {
     charSum += key.charCodeAt(i)
   }
 
