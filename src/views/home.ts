@@ -1,4 +1,5 @@
 import { html, define, router } from 'hybrids'
+import '../components/scope'
 
 interface Home {}
 
@@ -7,5 +8,5 @@ export default define<Home>({
   [router.connect]: {
     url: '/',
   },
-  content: () => html` <span>home page</span> `,
+  content: () => html` <app-scope scopes="${['foo', 'barzi1']}"></app-scope> `,
 })
