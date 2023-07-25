@@ -1,9 +1,9 @@
 import { define, html } from 'hybrids'
 import { appColor, styles } from '../lib/theme'
-import S from '../models/scope'
+import ScopeModel from '../models/scope'
 
 interface Scope {
-  scopes: S[]
+  scopes: ScopeModel[]
 }
 
 export default define<Scope>({

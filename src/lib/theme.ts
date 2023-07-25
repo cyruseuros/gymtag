@@ -1,6 +1,6 @@
 import pico from '@picocss/pico/css/pico.css?inline'
-import pink from './pink.css?inline'
-import hybrids from './hybrids.css?inline'
+import pink from '../css/pink.css?inline'
+import hybrids from '../css/hybrids.css?inline'
 import { material } from 'easycolors'
 
 function createStyleSheet(css: string): CSSStyleSheet {
@@ -14,8 +14,10 @@ const pinkStyle = createStyleSheet(pink)
 const hybridsStyle = createStyleSheet(hybrids)
 export const styles = [picoStyle, pinkStyle, hybridsStyle]
 
+// TODO: use emojis instead of icons (remember pico uses them as background images)
 // TODO: customize when you have a firmer stance on appearance
 // probably rob this blind: https://optemization.com/notion-color-guide
+// and apply here: https://github.com/picocss/pico/blob/master/css/themes/default.css
 const colors = [
   material.pink[600],
   material.blue[600],

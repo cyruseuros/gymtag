@@ -14,9 +14,6 @@ dependencies:
   hybrids:
     specifier: ^8.2.2
     version: 8.2.2
-  lucide:
-    specifier: ^0.259.0
-    version: 0.259.0
 
 devDependencies:
   '@vitest/browser':
@@ -3550,10 +3547,6 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
-
-  /lucide@0.259.0:
-    resolution: {integrity: sha512-9nVBtDlg1CC2/z5XNhVDzmGXuowQTWBp+9wfdy/us2y9sIsO5Pt5Q7iDjak829lsmV8lT6A89rLAfEN7yD43nA==}
-    dev: false
 
   /magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
