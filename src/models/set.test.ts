@@ -2,8 +2,8 @@ import Set from './set'
 import { beforeEach, describe, it, expect } from 'vitest'
 import { store } from 'hybrids'
 
-// TODO: test value setting
-// TODO: test actual persistence
+// TODO: figure out how to make sure it returns different colors
+// even though colisions are allowed
 describe.concurrent('Set', () => {
   const table = [
     { name: 'angle just right', v: { angle: 45 } },
@@ -31,7 +31,6 @@ describe.concurrent('Set', () => {
     })
   })
 
-  // TODO: match on exact error object
   for (const row of table) {
     it(row.name, async () => {
       if (row.error) {
