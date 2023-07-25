@@ -6,7 +6,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "fmt": "prettier -w .",
-    "fmt:ci": "prettier -c ."
+    "fmt:ci": "prettier -c .",
+    "todo": "leasot src"
   },
   "dependencies": {
     "@picocss/pico": "^1.5.10",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@vitest/browser": "^0.33.0",
+    "leasot": "^13.3.0",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.4",

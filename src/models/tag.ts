@@ -4,6 +4,7 @@ import type { Model } from 'hybrids'
 // TODO: ensure tag names are unique once storage.connect is set up
 interface Tag {
   id: string
+  emoji: string
   name: string
   scopes: Set<Scope>
 }
@@ -11,6 +12,8 @@ interface Tag {
 const Tag: Model<Tag> = {
   id: true,
   name: '',
+  // TODO: validate with https://www.npmjs.com/package/emoji-regex
+  emoji: '',
   scopes: new Set(),
 }
 
