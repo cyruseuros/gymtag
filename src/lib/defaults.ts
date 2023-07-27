@@ -48,7 +48,7 @@ interface Defaults {
 
     underhand: m.Tag
     overhand: m.Tag
-    neautral: m.Tag
+    neutral: m.Tag
   }
   sets: m.Set[]
   logs: m.Log[]
@@ -56,7 +56,8 @@ interface Defaults {
   workouts: m.Workout[]
 }
 
-export async function makeDefaults(): Defaults {
+// TODO: support skin tones and genders
+export async function makeDefaults(): Promise<Defaults> {
   return {
     tags: {
       push: await store.set(m.Tag, { emoji: '🫷', name: 'push' }),
@@ -71,19 +72,44 @@ export async function makeDefaults(): Defaults {
       triceps: await store.set(m.Tag, { emoji: '🙇', name: 'triceps' }),
       forearm: await store.set(m.Tag, { emoji: '🤜', name: 'forearm' }),
 
-      back: await store.set(m.Tag, { emoji: '🔻', name: 'back' }),
+      back: await store.set(m.Tag, { emoji: '🔽', name: 'back' }),
       lat: await store.set(m.Tag, { emoji: '🪽', name: 'lat' }),
       trap: await store.set(m.Tag, { emoji: '🤷', name: 'trap' }),
 
-      leg: await store.set(m.Tag, { emoji: '🪼', name: 'leg' }),
+      leg: await store.set(m.Tag, { emoji: '🐙', name: 'leg' }),
       quad: await store.set(m.Tag, { emoji: '🦵', name: 'quad' }),
       hamstring: await store.set(m.Tag, { emoji: '🐹', name: 'hamstring' }),
       calf: await store.set(m.Tag, { emoji: '🐮', name: 'calf' }),
 
-      deltoid: await store.set(m.Tag, { emoji: '🛆', name: 'deltoid' }),
-      quad: await store.set(m.Tag, { emoji: '🦵', name: 'quad' }),
-      hamstring: await store.set(m.Tag, { emoji: '🐹', name: 'hamstring' }),
-      calf: await store.set(m.Tag, { emoji: '🐮', name: 'calf' }),
+      deltoid: await store.set(m.Tag, { emoji: '🔼', name: 'deltoid' }),
+      front: await store.set(m.Tag, { emoji: '👉', name: 'front' }),
+      mid: await store.set(m.Tag, { emoji: '🫵', name: 'mid' }),
+      rear: await store.set(m.Tag, { emoji: '👈', name: 'rear' }),
+
+      chest: await store.set(m.Tag, { emoji: '🪘', name: 'chest' }),
+      upper: await store.set(m.Tag, { emoji: '☝️', name: 'upper' }),
+      lower: await store.set(m.Tag, { emoji: '👇', name: 'lower' }),
+
+      cable: await store.set(m.Tag, { emoji: '🚡', name: 'cable' }),
+      barbell: await store.set(m.Tag, { emoji: '💈', name: 'barbell' }),
+      dumbbell: await store.set(m.Tag, { emoji: '🔩', name: 'dumbbell' }),
+      machine: await store.set(m.Tag, { emoji: '⚙️', name: 'machine' }),
+      hammer: await store.set(m.Tag, { emoji: '🔨', name: 'hammer' }),
+      smith: await store.set(m.Tag, { emoji: '🛝', name: 'smith' }),
+
+      curl: await store.set(m.Tag, { emoji: '➰', name: 'curl' }),
+      squat: await store.set(m.Tag, { emoji: '🏋️', name: 'squat' }),
+      dead: await store.set(m.Tag, { emoji: '💀', name: 'dead' }),
+      lift: await store.set(m.Tag, { emoji: '🛗', name: 'lift' }),
+      raise: await store.set(m.Tag, { emoji: '💸', name: 'raise' }),
+
+      underhand: await store.set(m.Tag, { emoji: '🫴', name: 'underhand' }),
+      overhand: await store.set(m.Tag, { emoji: '🫳', name: 'overhand' }),
+      neutral: await store.set(m.Tag, { emoji: '🤙', name: 'neutral' }),
     },
+    sets: [],
+    logs: [],
+    exercises: [],
+    workouts: [],
   }
 }
