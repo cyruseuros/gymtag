@@ -6,7 +6,8 @@ interface Tag {
   id: string
   emoji: string
   name: string
-  scopes: Set<Scope>
+  // scopes will be dynamically computed in components
+  // TODO: re-eval whether scops should be static
 }
 
 const Tag: Model<Tag> = {
@@ -14,7 +15,6 @@ const Tag: Model<Tag> = {
   name: '',
   // TODO: validate with https://www.npmjs.com/package/emoji-regex
   emoji: '',
-  scopes: new Set(),
 }
 
 export function makeTagName(name: string): string {
