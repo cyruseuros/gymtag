@@ -6,8 +6,9 @@ import type { Model } from 'hybrids'
 interface Workout {
   id: string
   tags: Tag[]
+  // FIXME: this doesn't work - how do I distingusih between sessions?
   logs: Log[]
-  template: Log
+  template: Log[]
   archive: Exercise[]
 }
 
@@ -15,7 +16,7 @@ const Workout: Model<Workout> = {
   id: true,
   tags: [Tag],
   logs: [Log],
-  template: Log,
+  template: [Log],
   archive: [Exercise],
 }
 
