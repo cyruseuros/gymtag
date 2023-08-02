@@ -1,4 +1,4 @@
-import Log from './log'
+import Session from './session'
 import Tag from './tag'
 import Exercise from './exercise'
 import type { Model } from 'hybrids'
@@ -6,17 +6,16 @@ import type { Model } from 'hybrids'
 interface Workout {
   id: string
   tags: Tag[]
-  // FIXME: this doesn't work - how do I distingusih between sessions?
-  logs: Log[]
-  template: Log[]
+  sessions: Session[]
+  template: Session
   archive: Exercise[]
 }
 
 const Workout: Model<Workout> = {
   id: true,
   tags: [Tag],
-  logs: [Log],
-  template: [Log],
+  sessions: [Session],
+  template: Session,
   archive: [Exercise],
 }
 

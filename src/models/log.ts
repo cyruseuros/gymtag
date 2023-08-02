@@ -1,6 +1,7 @@
 import Tag from './tag'
 import Set from './set'
 import Exercise from './exercise'
+import Workout from './workout'
 import type { Model } from 'hybrids'
 
 interface Log {
@@ -10,8 +11,6 @@ interface Log {
   sets: Set[]
 }
 
-// NOTE: Logs are in a 2-way binding with exercises
-// and in a 1-way binding with workouts
 const Log: Model<Log> = {
   id: true,
   exercise: Exercise,
