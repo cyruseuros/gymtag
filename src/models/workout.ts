@@ -1,6 +1,5 @@
 import Session from './session'
 import Tag from './tag'
-import Exercise from './exercise'
 import type { Model } from 'hybrids'
 
 interface Workout {
@@ -8,7 +7,6 @@ interface Workout {
   tags: Tag[]
   sessions: Session[]
   template: Session
-  archive: Exercise[]
 }
 
 const Workout: Model<Workout> = {
@@ -16,7 +14,6 @@ const Workout: Model<Workout> = {
   tags: [Tag],
   sessions: [Session],
   template: Session,
-  archive: [Exercise],
 }
 
 export default Workout
