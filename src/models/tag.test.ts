@@ -1,5 +1,7 @@
 import { expect, it, describe } from 'vitest'
-import { makeTagName } from './tag'
+import { makeTagName, addTags } from './tag'
+import Tag from './tag'
+import { store } from 'hybrids'
 
 describe.concurrent('makeTagId', () => {
   const table = [
@@ -18,6 +20,36 @@ describe.concurrent('makeTagId', () => {
   for (const row of table) {
     it(row.name, () => {
       expect(makeTagName(row.in)).toEqual(row.out)
+    })
+  }
+})
+
+describe.concurrent.only('addTags', () => {
+  const table = [
+    {
+      name: 'add single tag',
+      tags: {
+        push: '🫷',
+      },
+    },
+    {
+      name: 'add multiple tags',
+      tags: {
+        pull: '🪢',
+        twist: '🥨',
+      },
+    },
+    {
+      name: 'add no tags',
+      tags: {},
+    },
+  ]
+
+  for (const row of table) {
+    it(row.name, async () => {
+      await addTags(row.tags)
+      console.log(store.get([Tag]))
+      store.set([Tag], null)
     })
   }
 })
