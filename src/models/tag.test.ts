@@ -24,7 +24,7 @@ describe.concurrent('makeTagId', () => {
   }
 })
 
-describe.concurrent.only('addTags', () => {
+describe.concurrent('addTags', () => {
   const table = [
     {
       name: 'add single tag',
@@ -47,9 +47,12 @@ describe.concurrent.only('addTags', () => {
 
   for (const row of table) {
     it(row.name, async () => {
-      await addTags(row.tags)
-      console.log(store.get([Tag]))
-      store.set([Tag], null)
+      const tags = await addTags(row.tags)
+      for (const [key, value] of Object.entries(row.tags)) {
+        const tag = store.get(Tag, tags[key as keyof typeof tags])
+        expect(tag.name).toEqual(key)
+        expect(tag.emoji).toEqual(value)
+      }
     })
   }
 })

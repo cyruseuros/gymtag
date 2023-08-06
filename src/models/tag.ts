@@ -28,14 +28,16 @@ export function makeTagName(name: string): string {
 // TODO: make it return name: id instead
 export async function addTags<T extends Record<string, string | undefined>>(
   tags: T,
-): Promise<Record<keyof T, Tag>> {
-  const t = {} as Record<keyof T, Tag>
+): Promise<Record<keyof T, string>> {
+  const t = {} as Record<keyof T, string>
 
   for (const [key, value] of Object.entries(tags)) {
-    t[key as keyof typeof t] = await store.set(Tag, {
+    const tag = await store.set(Tag, {
       name: key,
       emoji: value,
     })
+
+    t[key as keyof typeof t] = tag.id
   }
 
   return t
