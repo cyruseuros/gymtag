@@ -1,6 +1,6 @@
 import pico from '@picocss/pico/css/pico.css?inline'
-import pink from '../css/pink.css?inline'
-import hybrids from '../css/hybrids.css?inline'
+import pink from '../assets/css/pink.css?inline'
+import hybrids from '../assets/css/hybrids.css?inline'
 import { material } from 'easycolors'
 
 function createStyleSheet(css: string): CSSStyleSheet {

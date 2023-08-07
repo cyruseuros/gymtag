@@ -25,7 +25,6 @@ export function makeTagName(name: string): string {
   return id.replace(/-+/g, '-')
 }
 
-// TODO: make it return name: id instead
 export async function addTags<T extends Record<string, string | undefined>>(
   tags: T,
 ): Promise<Record<keyof T, string>> {
