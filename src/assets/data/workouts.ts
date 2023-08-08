@@ -1,19 +1,7 @@
-import type { Tags } from './tags'
-import * as m from '../../models'
+import { tags } from './tags'
+import { WorkoutData } from '../../models/workout'
 
-interface WorkoutSet extends Partial<Omit<m.Set, 'id' | 'tags'>> {
-  tags?: Array<keyof Tags>
-}
-
-interface Workout {
-  tags: Array<keyof Tags>
-  template: Array<{
-    tags: Array<keyof Tags>
-    sets: Array<WorkoutSet>
-  }>
-}
-
-export const workouts: Workout[] = [
+export const workouts: WorkoutData<typeof tags>[] = [
   {
     tags: ['arm', 'shoulder'],
     template: [

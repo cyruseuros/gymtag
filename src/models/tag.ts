@@ -25,6 +25,7 @@ export function makeTagName(name: string): string {
   return id.replace(/-+/g, '-')
 }
 
+// TODO: rewrite to use new data types
 export async function addTags<T extends Record<string, string | undefined>>(
   tags: T,
 ): Promise<Record<keyof T, string>> {
@@ -41,3 +42,5 @@ export async function addTags<T extends Record<string, string | undefined>>(
 
   return t
 }
+
+export type TagData<T extends string> = Record<T, string>

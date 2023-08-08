@@ -36,3 +36,7 @@ const Set: Model<Set> = {
 }
 
 export default Set
+
+export interface SetData<T> extends Partial<Omit<Set, 'id' | 'tags'>> {
+  tags?: Array<keyof T>
+}
