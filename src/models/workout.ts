@@ -3,6 +3,8 @@ import Tag from './tag'
 import { SetData } from './set'
 import { TagData } from './tag'
 import type { Model } from 'hybrids'
+import { store } from 'hybrids'
+import * as m from '../models'
 
 interface Workout {
   id: string
@@ -28,11 +30,32 @@ export interface WorkoutData<T> {
   }>
 }
 
-export function addWorkouts<T extends string>(
+export async function addWorkouts<T extends string>(
   tagIds: TagData<T>,
-  workouts: WorkoutData<typeof tagIds>,
+  workouts: WorkoutData<typeof tagIds>[],
 ) {
-  // TODO: implement
+  console.log('here')
+  for (const workout of workouts) {
+    console.log(workout.tags)
+    await store.set(m.Workout, {
+      tags: workout.tags.map(tag => store.get(m.Tag, tagIds[tag])),
+      template: await store.set(m.Session, {
+        logs: await Promise.all(
+          workout.template.map(async log => ({
+            tags: log.tags.map(tag => store.get(m.Tag, tagIds[tag])),
+            sets: await Promise.all(
+              log.sets.map(
+                async set =>
+                  await store.set(m.Set, {
+                    tags: set.tags
+                      ? set.tags.map(tag => store.get(m.Tag, tagIds[tag]))
+                      : undefined,
+                  }),
+              ),
+            ),
+          })),
+        ),
+      }),
+    })
+  }
 }
-
-addWorkouts({ foo: 'bar' }, { template: [], tags: ['foo'] })

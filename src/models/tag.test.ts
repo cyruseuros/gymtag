@@ -1,5 +1,6 @@
 import { expect, it, describe } from 'vitest'
 import { makeTagName, addTags } from './tag'
+import { tags } from '../assets/data/tags'
 import Tag from './tag'
 import { store } from 'hybrids'
 
@@ -27,6 +28,10 @@ describe.concurrent('makeTagId', () => {
 describe.concurrent('addTags', () => {
   const table = [
     {
+      name: 'add no tags',
+      tags: {},
+    },
+    {
       name: 'add single tag',
       tags: {
         push: '🫷',
@@ -40,8 +45,8 @@ describe.concurrent('addTags', () => {
       },
     },
     {
-      name: 'add no tags',
-      tags: {},
+      name: 'add default tags',
+      tags: tags,
     },
   ]
 
