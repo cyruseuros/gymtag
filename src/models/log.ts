@@ -1,7 +1,6 @@
 import Tag from './tag'
 import Set from './set'
 import Exercise from './exercise'
-import Workout from './workout'
 import type { Model } from 'hybrids'
 
 interface Log {

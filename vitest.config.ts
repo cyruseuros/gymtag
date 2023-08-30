@@ -5,7 +5,8 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: true,
-      name: 'firefox',
+      provider: 'playwright',
+      name: 'chromium',
     },
   },
 })
