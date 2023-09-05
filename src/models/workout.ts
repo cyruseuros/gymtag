@@ -34,36 +34,32 @@ export async function addWorkouts<T extends string>(
   tagIds: TagData<T>,
   workouts: WorkoutData<typeof tagIds>[],
 ) {
-  console.log('after set')
-  for (const w of workouts) {
-    const logs = []
-    for (const l of w.template) {
-      const log = await store.set(m.Log, {
-        tags: l.tags.map(t => store.get(m.Tag, tagIds[t])),
-      })
-      const sets = []
-      for (const s of l.sets) {
-        const set = await store.set(m.Set, {
-          angle: s.angle || 0,
-          difficulty: s.difficulty || 0,
-          distance: s.distance || 0,
-          reps: s.reps || 0,
-          time: s.time || 0,
-          weight: s.weight || 0,
-        })
-        if (s.tags) {
-          store.set(set, {
-            tags: s.tags.map(t => store.get(m.Tag, tagIds[t])),
-          })
-        }
-        sets.push(set)
-      }
-      logs.push(log)
-    }
-    const template = await store.set(m.Session, { logs: logs })
+  for (const workout of workouts) {
     await store.set(m.Workout, {
-      tags: w.tags.map(t => store.get(m.Tag, tagIds[t])),
-      template: template,
+      tags: workout.tags.map(tag => store.get(m.Tag, tagIds[tag])),
+      template: await store.set(m.Session, {
+        logs: await Promise.all(
+          workout.template.map(async log => ({
+            tags: log.tags.map(tag => store.get(m.Tag, tagIds[tag])),
+            sets: await Promise.all(
+              log.sets.map(
+                async set =>
+                  await store.set(m.Set, {
+                    tags: set.tags
+                      ? set.tags.map(tag => store.get(m.Tag, tagIds[tag]))
+                      : [],
+                    weight: set.weight,
+                    distance: set.distance,
+                    reps: set.reps,
+                    time: set.time,
+                    angle: set.angle,
+                    difficulty: set.difficulty,
+                  }),
+              ),
+            ),
+          })),
+        ),
+      }),
     })
   }
 }
