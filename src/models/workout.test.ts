@@ -3,6 +3,7 @@ import { addWorkouts } from './workout'
 import { workouts } from '../assets/data/workouts'
 import { tags } from '../assets/data/tags'
 import { addTags } from './tag'
+import type { TagIds } from './tag'
 
 describe.only.concurrent('addWorkouts', () => {
   const table = [
@@ -11,7 +12,7 @@ describe.only.concurrent('addWorkouts', () => {
     // { name: 'adds default workouts', workouts: workouts },
   ]
 
-  let tagIds: Awaited<ReturnType<typeof addTags<typeof tags>>>
+  let tagIds: TagIds<keyof typeof tags>
 
   beforeAll(async () => {
     tagIds = await addTags(tags)
@@ -20,7 +21,6 @@ describe.only.concurrent('addWorkouts', () => {
   for (const row of table) {
     it(row.name, async () => {
       console.log('before add workouts')
-      // FIXME: the test framework stalls if you run this
       await addWorkouts(tagIds, row.workouts)
       expect(true).toBeTruthy()
     })

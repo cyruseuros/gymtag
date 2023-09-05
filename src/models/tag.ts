@@ -25,16 +25,19 @@ export function makeTagName(name: string): string {
   return id.replace(/-+/g, '-')
 }
 
-// TODO: rewrite to use new data types
-export async function addTags<T extends Record<string, string | undefined>>(
-  tags: T,
-): Promise<Record<keyof T, string>> {
-  const t = {} as Record<keyof T, string>
+export type TagData<T extends string> = Record<T, string>
+export type TagIds<T extends string> = Record<T, string>
+
+export async function addTags<T extends string>(
+  tags: TagData<T>,
+): Promise<TagIds<keyof typeof tags>> {
+  const t = {} as TagIds<T>
 
   for (const [key, value] of Object.entries(tags)) {
     const tag = await store.set(Tag, {
       name: key,
-      emoji: value,
+      // for some reson the compiler is not smart enough to infer that value is a string here
+      emoji: value as string,
     })
 
     t[key as keyof typeof t] = tag.id
@@ -43,4 +46,6 @@ export async function addTags<T extends Record<string, string | undefined>>(
   return t
 }
 
-export type TagData<T extends string> = Record<T, string>
+export function getTags<T extends string>(tagIds: TagIds<T>, tags: T[]): Tag[] {
+  return tags.map(tag => store.get(Tag, tagIds[tag]))
+}

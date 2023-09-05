@@ -30,6 +30,7 @@ export interface WorkoutData<T> {
   }>
 }
 
+// TODO: break out into separate add<Model> functions in different modules
 export async function addWorkouts<T extends string>(
   tagIds: TagData<T>,
   workouts: WorkoutData<typeof tagIds>[],
