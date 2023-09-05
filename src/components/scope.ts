@@ -1,5 +1,6 @@
 import { define, html } from 'hybrids'
-import { appColor, styles } from '../lib/theme'
+import { appColor } from '../lib/theme'
+import { styles } from '../lib/css'
 import ScopeModel from '../models/scope'
 
 interface Scope {

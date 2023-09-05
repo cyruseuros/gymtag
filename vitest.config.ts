@@ -3,10 +3,9 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   test: {
     browser: {
-      enabled: true,
+      enabled: false,
       headless: true,
-      provider: 'playwright',
-      name: 'chromium',
+      name: 'firefox',
     },
   },
 })

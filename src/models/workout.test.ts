@@ -13,9 +13,9 @@ describe.only.concurrent('addWorkouts', () => {
 
   let tagIds: Awaited<ReturnType<typeof addTags<typeof tags>>>
 
-  // beforeAll(async () => {
-  //   tagIds = await addTags(tags)
-  // })
+  beforeAll(async () => {
+    tagIds = await addTags(tags)
+  })
 
   for (const row of table) {
     it(row.name, async () => {

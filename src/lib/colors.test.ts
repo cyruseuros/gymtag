@@ -1,4 +1,4 @@
-import { appColor } from './theme'
+import { appColor } from './colors'
 import { expect, describe, it } from 'vitest'
 
 describe.concurrent('appColor', () => {

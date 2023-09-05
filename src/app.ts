@@ -1,5 +1,5 @@
 import { mount, html, router, define } from 'hybrids'
-import { styles } from './lib/theme'
+import { styles } from './lib/css'
 import Home from './views/home'
 
 // @ts-ignore
