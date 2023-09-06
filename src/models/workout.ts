@@ -1,10 +1,8 @@
 import Session from './session'
-import Tag from './tag'
-import { SetData } from './set'
-import { TagData } from './tag'
+import Tag, { TagIds, getTags } from './tag'
 import type { Model } from 'hybrids'
 import { store } from 'hybrids'
-import * as m from '../models'
+import { addLogs, type LogData } from './log'
 
 interface Workout {
   id: string
@@ -23,44 +21,22 @@ const Workout: Model<Workout> = {
 export default Workout
 
 export interface WorkoutData<T> {
-  tags: Array<keyof T>
-  template: Array<{
-    tags: Array<keyof T>
-    sets: Array<SetData<T>>
-  }>
+  tags: Array<T>
+  template: LogData<T>[]
 }
 
-// TODO: break out into separate add<Model> functions in different modules
-export async function addWorkouts<T extends string>(
-  tagIds: TagData<T>,
-  workouts: WorkoutData<typeof tagIds>[],
-) {
-  for (const workout of workouts) {
-    await store.set(m.Workout, {
-      tags: workout.tags.map(tag => store.get(m.Tag, tagIds[tag])),
-      template: await store.set(m.Session, {
-        logs: await Promise.all(
-          workout.template.map(async log => ({
-            tags: log.tags.map(tag => store.get(m.Tag, tagIds[tag])),
-            sets: await Promise.all(
-              log.sets.map(
-                async set =>
-                  await store.set(m.Set, {
-                    tags: set.tags
-                      ? set.tags.map(tag => store.get(m.Tag, tagIds[tag]))
-                      : [],
-                    weight: set.weight,
-                    distance: set.distance,
-                    reps: set.reps,
-                    time: set.time,
-                    angle: set.angle,
-                    difficulty: set.difficulty,
-                  }),
-              ),
-            ),
-          })),
-        ),
+export async function addWorkouts<T extends string | symbol | number>(
+  tagIds: TagIds<T>,
+  workouts: WorkoutData<T>[],
+): Promise<Workout[]> {
+  return await Promise.all(
+    workouts.map(async workout =>
+      store.set(Workout, {
+        tags: getTags(tagIds, workout.tags),
+        template: await store.set(Session, {
+          logs: await addLogs(tagIds, workout.template),
+        }),
       }),
-    })
-  }
+    ),
+  )
 }

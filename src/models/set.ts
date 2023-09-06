@@ -46,11 +46,13 @@ export async function addSets<T extends string | symbol | number>(
   tagIds: TagIds<T>,
   sets: SetData<T>[],
 ): Promise<Set[]> {
-  const s: Set[] = []
+  if (sets.length === 0) {
+    return []
+  }
 
-  for (const set of sets) {
-    s.push(
-      await store.set(Set, {
+  return await Promise.all(
+    sets.map(set =>
+      store.set(Set, {
         tags: getTags(tagIds, set.tags),
         weight: set.weight,
         distance: set.distance,
@@ -59,8 +61,6 @@ export async function addSets<T extends string | symbol | number>(
         angle: set.angle,
         difficulty: set.difficulty,
       }),
-    )
-  }
-
-  return s
+    ),
+  )
 }
