@@ -1,6 +1,7 @@
 import { store } from 'hybrids'
 import type { Model } from 'hybrids'
-import Tag from './tag'
+import Tag, { getTags } from './tag'
+import type { TagIds } from './tag'
 
 // TODO: handle units in the future
 // TODO: timestamps (implications on logs)
@@ -38,5 +39,28 @@ const Set: Model<Set> = {
 export default Set
 
 export interface SetData<T> extends Partial<Omit<Set, 'id' | 'tags'>> {
-  tags?: Array<keyof T>
+  tags?: Array<T>
+}
+
+export async function addSets<T extends string | symbol | number>(
+  tagIds: TagIds<T>,
+  sets: SetData<T>[],
+): Promise<Set[]> {
+  const s: Set[] = []
+
+  for (const set of sets) {
+    s.push(
+      await store.set(Set, {
+        tags: getTags(tagIds, set.tags),
+        weight: set.weight,
+        distance: set.distance,
+        reps: set.reps,
+        time: set.time,
+        angle: set.angle,
+        difficulty: set.difficulty,
+      }),
+    )
+  }
+
+  return s
 }

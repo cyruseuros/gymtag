@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, afterEach } from 'vitest'
 import { addWorkouts } from './workout'
 import { workouts } from '../assets/data/workouts'
 import { tags } from '../assets/data/tags'
-import { addTags } from './tag'
+import { setTags } from './tag'
 import type { TagIds } from './tag'
 
 describe.only.concurrent('addWorkouts', () => {
@@ -15,7 +15,7 @@ describe.only.concurrent('addWorkouts', () => {
   let tagIds: TagIds<keyof typeof tags>
 
   beforeAll(async () => {
-    tagIds = await addTags(tags)
+    tagIds = await setTags(tags)
   })
 
   for (const row of table) {

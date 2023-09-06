@@ -1,5 +1,5 @@
 import { expect, it, describe } from 'vitest'
-import { makeTagName, addTags } from './tag'
+import { makeTagName, setTags } from './tag'
 import { tags } from '../assets/data/tags'
 import Tag from './tag'
 import { store } from 'hybrids'
@@ -52,7 +52,7 @@ describe.concurrent('addTags', () => {
 
   for (const row of table) {
     it(row.name, async () => {
-      const tags = await addTags(row.tags)
+      const tags = await setTags(row.tags)
       for (const [key, value] of Object.entries(row.tags)) {
         const tag = store.get(Tag, tags[key as keyof typeof tags])
         expect(tag.name).toEqual(key)

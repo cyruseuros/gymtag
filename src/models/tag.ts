@@ -25,12 +25,16 @@ export function makeTagName(name: string): string {
   return id.replace(/-+/g, '-')
 }
 
-export type TagData<T extends string> = Record<T, string>
-export type TagIds<T extends string> = Record<T, string>
+export type TagData<T extends string | symbol | number> = Partial<
+  Record<T, string>
+>
+export type TagIds<T extends string | symbol | number> = Partial<
+  Record<T, string>
+>
 
-export async function addTags<T extends string>(
+export async function addTags<T extends string | symbol | number>(
   tags: TagData<T>,
-): Promise<TagIds<keyof typeof tags>> {
+): Promise<TagIds<T>> {
   const t = {} as TagIds<T>
 
   for (const [key, value] of Object.entries(tags)) {
@@ -46,6 +50,9 @@ export async function addTags<T extends string>(
   return t
 }
 
-export function getTags<T extends string>(tagIds: TagIds<T>, tags: T[]): Tag[] {
-  return tags.map(tag => store.get(Tag, tagIds[tag]))
+export function getTags<T extends string | symbol | number>(
+  tagIds: TagIds<T>,
+  tags?: T[],
+): Tag[] {
+  return tags ? tags.map(tag => store.get(Tag, tagIds[tag])) : []
 }
