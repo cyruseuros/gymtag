@@ -7,7 +7,6 @@ interface Tag {
   emoji: string
   name: string
   // scopes will be dynamically computed in components
-  // TODO: re-eval whether scops should be static
 }
 
 const Tag: Model<Tag> = {

@@ -6,7 +6,6 @@ interface Tag {
   t?: T
 }
 
-// TODO: populate store with dummy data for tests
 export default define<Tag>({
   tag: 'app-tag',
   t: store(T),
@@ -15,7 +14,7 @@ export default define<Tag>({
       <a role="button" layout="row gap">
         <span>#${e.t?.emoji}</span>
         <span>${e.t?.name}</span>
-        <app-scope scopes="${e.t?.scopes}"></app-scope>
+        <app-scope scopes="${['foo', 'bar']}"></app-scope>
       </a>
     </template>
   `,
