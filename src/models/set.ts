@@ -42,6 +42,7 @@ export interface SetData<T> extends Partial<Omit<Set, 'id' | 'tags'>> {
   tags?: Array<T>
 }
 
+// TODO: test +next
 export async function addSets<T extends string | symbol | number>(
   tagIds: TagIds<T>,
   sets: SetData<T>[],

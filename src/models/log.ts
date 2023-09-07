@@ -24,6 +24,7 @@ export interface LogData<T> {
   sets: Array<SetData<T>>
 }
 
+// TODO: test
 export async function addLogs<T extends string | symbol | number>(
   tagIds: TagIds<T>,
   logs: LogData<T>[],
