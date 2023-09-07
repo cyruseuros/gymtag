@@ -1,7 +1,7 @@
 import { tags } from './tags'
 import { WorkoutData } from '../../models/workout'
 
-export const workouts: WorkoutData<typeof tags>[] = [
+export const workouts: WorkoutData<keyof typeof tags>[] = [
   {
     tags: ['arm', 'shoulder'],
     template: [

@@ -22,7 +22,6 @@ describe.only.concurrent('addWorkouts', () => {
   for (const row of table) {
     it(row.name, async () => {
       console.log('before add workouts')
-      // TODO: fix type error
       await addWorkouts(tagIds, row.workouts)
       expect(true).toBeTruthy()
     })
